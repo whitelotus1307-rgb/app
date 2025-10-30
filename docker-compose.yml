@@ -1,0 +1,17 @@
+version: '3.8'
+
+services:
+  aegis-ui:
+    build: .
+    ports:
+      - "8501:8501"
+    environment:
+      - ENCRYPTION_KEY=your-encryption-key-here
+      - MLFLOW_TRACKING_URI=./mlruns
+    volumes:
+      - ./data:/app/data
+      - ./outputs:/app/outputs
+    restart: unless-stopped
+
+  # Add other services like database if needed later
+
